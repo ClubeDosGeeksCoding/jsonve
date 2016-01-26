@@ -1,0 +1,23 @@
+{
+	"head":{
+		"meta":[
+			{
+				"charset":"utf-8"
+			}
+		],
+		"title": "Teste",
+		"stylesheet":[
+			{"href":"teste.css"}
+		]
+	},
+	"body":[
+		{
+			"div":[
+				{
+					"class":"classe",
+					"content":"Texto",
+				}
+			]
+		}
+	]
+}

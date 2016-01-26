@@ -1,0 +1,25 @@
+{
+  "name": "jsonve",
+  "version": "0.0.1",
+  "description": "Node.js view engine with json",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ClubeDosGeeksCoding/jsonve.git"
+  },
+  "keywords": [
+    "view",
+    "engine",
+    "json"
+  ],
+  "author": "Jayr Alencar - Clube dos Geeks",
+  "scripts": { "test": "node test/app.js" },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ClubeDosGeeksCoding/jsonve/issues"
+  },
+  "homepage": "https://github.com/ClubeDosGeeksCoding/jsonve#readme"
+}
