@@ -5,31 +5,57 @@ var http = require("http");
 var server = http.createServer(function(request, response) {
 	response.writeHead(200, {"Content-Type": "text/html"});
 	var test = view.render({
-		"head":{
-			"meta":[
+		"head":[
 			{
-				"charset":"utf-8"
+				"meta":{
+					"charset":'utf-8'
+				}
+			},
+			{
+				"title":{
+					"content":"Teste"
+				}
+			},
+			{
+				"link":{
+					"href":"test.css"
+				}
 			}
-			],
-			"title": "Teste",
-			"link":[
-			{"href":"teste.css"}
-			]
-		},
+		],
 		"body":[
-		{
-			"div":
 			{
-				"class":"classe",
-				"content":"Texto",
+				"div":
+				{
+					"class":"classe",
+					"style": "background:red",
+					"content":"Texto",
+				},
+
+			},
+			{
+				"table":{
+					"width":"300",
+					"border":"1",
+					"content":[
+						{
+							"tr":{
+								content:"<td>1</td><td>12</td>"
+							}
+						},
+						{
+							"tr":{
+								content:"<td>1</td><td>12</td>"
+							}
+						}
+					]
+				}
 			}
-		}
 		]
 	});
 	response.write(test);
 	response.end();
 })
 
-server.listen(80);
+server.listen(3000);
 console.log("Server is listening");
 

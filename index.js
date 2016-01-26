@@ -18,10 +18,9 @@ jsonve.prototype.render = function(template, data, options){
 
 	//Head
 	doc += '<head>\n';
-	for(k in obj.head){
-		switch(typeof(obj.head[k])){
-			case 'string': doc += '<'+k+'>'+obj.head[k]+'</'+k+'>\n'; break;
-			case 'object': doc += fromObjetc(k, obj.head[k]); break;
+	for(var i = 0 ; i < obj.head.length; i++){
+		for(k in obj.head[i]){
+			doc += addElement(k, obj.head[i][k])
 		}
 	}
 	doc += '</head>\n';
@@ -30,7 +29,6 @@ jsonve.prototype.render = function(template, data, options){
 	doc += '<body>\n';
 	for(var i = 0 ; i < obj.body.length; i++){
 		for(k in obj.body[i]){
-			// console.log(obj.body[i][k])
 			doc += addElement(k, obj.body[i][k])
 		}
 	}
@@ -42,21 +40,6 @@ jsonve.prototype.render = function(template, data, options){
 
 }
 
-function fromObjetc(key, value){
-	var str = '';
-	content=(value.content)?value.content:'';
-	content=(value.html)?value.html:'';
-	for(var i = 0 ; i < value.length; i++){
-		var partial = '<'+key+' ';
-		for(k in value[i]){
-			partial+= ' '+k+'="'+value[i][k]+'"';
-		}
-		partial+='>'+content+'</'+key+'>\n';
-		str+=partial;
-	}
-	return str;
-}
-
 function addElement(key, value){
 	content=(value.content)?value.content:'';
 	delete value.content;
@@ -64,7 +47,17 @@ function addElement(key, value){
 	for(k in value){
 		str += ' '+k+'="'+value[k]+'"';
 	}
-	str += '>'+content+'<'+key+'>\n';
+	str += '>\n';
+	if(typeof(content)=='object'){
+		for(var i = 0 ; i < content.length; i++){
+			for(ky in content[i]){
+				str += addElement(ky, content[i][ky]);
+			}
+		}
+	}else{
+		str+=content;
+	}
+	str += '</'+key+'>\n';
 	return str;
 }
 
